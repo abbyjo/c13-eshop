@@ -39,10 +39,31 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', (req, res) => {
   // create a new category
+  Category.create({
+    id: req.body.id ,
+    category_name: req.body.category_name
+  })
+    .then(newCategory => res.status(200).json(newCategory))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
+  Category.update(
+    {
+      id: req.body.id ,
+      category_name: req.body.category_name
+    },
+    { 
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(updatedCategory => res.status(200).json(updatedCategory))
+    .catch( err => res.status(500).json(err))
 });
 
 router.delete('/:id', (req, res) => {
