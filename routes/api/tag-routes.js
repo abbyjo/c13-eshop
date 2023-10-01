@@ -39,10 +39,31 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', (req, res) => {
   // create a new tag
+  Tag.create({
+    id: req.body.id ,
+    tag_name: req.body.tag_name
+  })
+    .then(newTag => res.status(200).json(newTag))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
+  Tag.update(
+    {
+      id: req.body.id ,
+      tag_name: req.body.tag_name
+    },
+    { 
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(updatedTag => res.status(200).json(updatedTag))
+    .catch( err => res.status(500).json(err))
 });
 
 router.delete('/:id', (req, res) => {
