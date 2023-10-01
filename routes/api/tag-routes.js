@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Product data
   try {
     const allTags = await Tag.findAll({
-      include: [{ model: Product }, { model: ProductTag }]
+      include: [{ model: Product }]
     });
     res.status(200).json(allTags);
     
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Product data
   try {
     const oneTag = await Tag.findByPk(req.params.id, {
-      include: [{ model: Product }, { model: ProductTag }]
+      include: [{ model: Product }]
     });
 
     if (!oneTag) {
@@ -62,7 +62,7 @@ router.put('/:id', (req, res) => {
         id: req.params.id
       }
     })
-    .then(updatedTag => res.status(200).json(updatedTag))
+    .then(() => res.status(200).json({message:"Tag updated successfully!" }))
     .catch( err => res.status(500).json(err))
 });
 
@@ -73,8 +73,8 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then(deletedTag => {
-    res.json(deletedTag);
+  .then(() => {
+    res.json({message: "Product deleted!"});
     res.status(200)
   })
   .catch (err => {
