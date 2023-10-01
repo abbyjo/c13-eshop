@@ -10,7 +10,7 @@ Download the relevant files onto your computer. Using node, install all dependen
 
 ## Usage
 
-[Here is a video]() showcasing this program's functionality! <br>
+[Here is a video](https://drive.google.com/file/d/1rdqYvkqoyEdw4OREMky-UUSGAEEyufZG/view) showcasing this program's functionality. <br>
 Once all files and dependencies have been downloaded, run the commend "npm start" to start the server! GET, PUT, POST and DELETE requests can be made using an API platform of your choice. The walkthrough video linked above demonstrates the possible requests that can be made and is using Postman. <br>
 
 ## License 
