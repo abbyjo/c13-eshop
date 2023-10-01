@@ -74,7 +74,7 @@ router.delete('/:id', (req, res) => {
     }
   })
   .then(() => {
-    res.json({message: "Product deleted!"});
+    res.json({message: "Tag deleted!"});
     res.status(200)
   })
   .catch (err => {
